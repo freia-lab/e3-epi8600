@@ -5,11 +5,19 @@ E3_MODULE_NAME := epi8600
 E3_MODULE_SRC_PATH := $(EPICS_MODULE_NAME)
 E3_MODULE_MAKEFILE := $(E3_MODULE_NAME).Makefile
 
+OPI_VERSION := 1.0.0
+OPI_DIRNAME := EPI_flowmeters
+
 # If you have any module dependencies, put them here:
 #
 #     STREAM_DEP_VERSION := 2.8.24+1
 #
 # These will be automatically picked up by the build system.
+
+MODBUS_DEP_VERSION:=3.2.0+3
+IOCSHUTILS_DEP_VERSION:=2.10.0+1
+AUTOSAVE_DEP_VERSION:=5.11.0+0
+AFTERINIT_DEP_VERSION:=1.2.1+0
 
 -include $(TOP)/configure/CONFIG_OPTIONS
 -include $(TOP)/configure/CONFIG_MODULE.local

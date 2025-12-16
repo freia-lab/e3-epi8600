@@ -1,0 +1,110 @@
+record(stringin,"$(P)$(D):SerialNo") {
+    field(DESC, "Serial number")				     
+    field(DTYP,"asynOctetRead")
+    field(INP,"@asyn($(PORT_RO) 0)STRING_HIGH_LOW")
+    field(SCAN,"I/O Intr")
+}
+
+record(ai, "$(P)$(D):FlowRt") {
+    field(DESC, "Gas flow rate")
+    field(DTYP, "asynInt32")
+    field(INP,"@asynMask($(PORT_RO) 10 32)INT32_BE")
+    field(LINR,"NO CONVERSION")
+    field(ASLO,"$(ASLO)")
+    field(HOPR,"400")
+    field(LOPR,"0")
+    field(PREC,"3")
+    field(EGU, "Nm³/h")
+    field(SCAN,"I/O Intr")
+    field(SMOO, "0.95")
+    info (autosaveFields, "SMOO")
+}
+
+record(ai, "$(P)$(D):Flow-acc1") {
+    field(DESC, "Accumulated gas flow")
+    field(DTYP, "asynInt32")
+    field(INP,"@asynMask($(PORT_RO) 12 32)INT32_BE")
+    field(LINR,"NO CONVERSION")
+    field(HOPR,"4000000")
+    field(LOPR,"0")
+    field(PREC,"0")
+    field(EGU, "Nm³")
+    field(SCAN,"I/O Intr")
+}
+record(ai, "$(P)$(D):Flow-acc2") {
+    field(DESC, "Accumulated gas flow")
+    field(DTYP, "asynInt32")
+    field(INP,"@asynMask($(PORT_RO) 14 16)MODBUS_DATA")
+    field(LINR,"NO CONVERSION")
+    field(ASLO,"0.001")
+    field(HOPR,"1")
+    field(LOPR,"0")
+    field(PREC,"3")
+    field(EGU, "Nm³")
+    field(SCAN,"I/O Intr")
+    field(FLNK, "$(P)$(D):AccFlow PP")
+}
+
+record(calc, "$(P)$(D):AccFlow") {
+    field(DESC, "Accumulated gas flow")
+    field(INPA, "$(P)$(D):Flow-acc1")
+    field(INPB, "$(P)$(D):Flow-acc2")
+    field(INPC, "$(SCALE)")
+    field(CALC, "(A+B)*C")
+    field(EGU, "Nm³")
+    field(PREC,"3")
+}
+
+record(ai, "$(P)$(D):T") {
+    field(DESC, "Ambient temperature")
+    field(DTYP, "asynInt32")
+    field(INP,"@asynMask($(PORT_RO) 15 16)MODBUS_DATA")
+    field(LINR,"LINEAR")
+    field(EGUL,"0")
+    field(EGUF,"655.35")
+    field(HOPR,"60.0")
+    field(LOPR,"0")
+    field(PREC,"2")
+    field(EGU, "°C")
+    field(SCAN,"I/O Intr")
+    field(SMOO, "0.8")
+    info (autosaveFields, "SMOO")
+}
+
+##################################################
+#
+# Commands
+
+record(longout, "$(P)$(D):WriteEnable") {
+    field(DESC, "Write enable")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,"@asynMask($(PORT_WO) 0x00FF 0xFFFF)")
+    field(VAL, "0xAA55")
+}
+
+record(longout, "$(P)$(D):AccFlow-Rst") {
+    field(DESC, "Reset accumulated flow")
+    field(DTYP, "asynUInt32Digital")
+    field(OUT,"@asynMask($(PORT_WO) 0x00F2 0xFFFF)")
+    field(VAL, "0x0001")
+}
+
+##################################################
+#
+# Help records
+
+# A help record to check if data read from Modbus
+# via Modbus gateway updates ok. This record is to be used
+# for reporting an error when the Modbus data is read
+# without any error but it's the old data, not the current one
+#
+record(calc, "$(P)$(D):sAlive") {
+   field(DESC, "Live data OK")
+   field(SCAN, "60 second")
+   field(INPA, "$(P)$(D):AccFlow")
+   field(INPB, "$(P)$(D):sAlive.LA")
+   field(CALC, "((A-B)>0)?1:0")
+   field(LOW, "0.5")
+   field(PINI, "YES")
+   field(LSV, "MAJOR")
+}
