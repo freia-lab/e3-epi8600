@@ -1,14 +1,14 @@
 record(stringin,"$(P)$(D):SerialNo") {
     field(DESC, "Serial number")				     
-    field(DTYP,"asynOctetRead")
-    field(INP,"@asyn($(PORT_RO) 0)STRING_HIGH_LOW")
+    field(DTYP,"asynInt32")
+    field(INP,"@asynMask($(PORT_RO) 6 32)INT32_BE")
     field(SCAN,"I/O Intr")
 }
 
 record(ai, "$(P)$(D):FlowRt") {
     field(DESC, "Gas flow rate")
     field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 10 32)INT32_BE")
+    field(INP,"@asynMask($(PORT_RO) 0 32)FLOAT32_BE")
     field(LINR,"NO CONVERSION")
     field(ASLO,"$(ASLO)")
     field(HOPR,"400")
@@ -20,48 +20,22 @@ record(ai, "$(P)$(D):FlowRt") {
     info (autosaveFields, "SMOO")
 }
 
-record(ai, "$(P)$(D):Flow-acc1") {
+record(ai, "$(P)$(D):AccFlow") {
     field(DESC, "Accumulated gas flow")
     field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 12 32)INT32_BE")
+    field(INP,"@asynMask($(PORT_RO) 2 32)FLOAT32_BE")
     field(LINR,"NO CONVERSION")
-    field(HOPR,"4000000")
-    field(LOPR,"0")
-    field(PREC,"0")
+    field(ASLO,"$(ASLO)")
     field(EGU, "Nm³")
     field(SCAN,"I/O Intr")
-}
-record(ai, "$(P)$(D):Flow-acc2") {
-    field(DESC, "Accumulated gas flow")
-    field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 14 16)MODBUS_DATA")
-    field(LINR,"NO CONVERSION")
-    field(ASLO,"0.001")
-    field(HOPR,"1")
-    field(LOPR,"0")
-    field(PREC,"3")
-    field(EGU, "Nm³")
-    field(SCAN,"I/O Intr")
-    field(FLNK, "$(P)$(D):AccFlow PP")
-}
-
-record(calc, "$(P)$(D):AccFlow") {
-    field(DESC, "Accumulated gas flow")
-    field(INPA, "$(P)$(D):Flow-acc1")
-    field(INPB, "$(P)$(D):Flow-acc2")
-    field(INPC, "$(SCALE)")
-    field(CALC, "(A+B)*C")
-    field(EGU, "Nm³")
     field(PREC,"3")
 }
 
 record(ai, "$(P)$(D):T") {
     field(DESC, "Ambient temperature")
     field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 15 16)MODBUS_DATA")
-    field(LINR,"LINEAR")
-    field(EGUL,"0")
-    field(EGUF,"655.35")
+    field(INP,"@asynMask($(PORT_RO) 4 32)FLOAT32_BE")
+    field(LINR,"NO CONVERSION")
     field(HOPR,"60.0")
     field(LOPR,"0")
     field(PREC,"2")
@@ -78,15 +52,15 @@ record(ai, "$(P)$(D):T") {
 record(longout, "$(P)$(D):WriteEnable") {
     field(DESC, "Write enable")
     field(DTYP, "asynUInt32Digital")
-    field(OUT,"@asynMask($(PORT_WO) 0x00FF 0xFFFF)")
-    field(VAL, "0xAA55")
+    field(OUT,"@asynMask($(PORT_WO) 219 0xFFFF)")
+    field(VAL, "9001")
 }
 
 record(longout, "$(P)$(D):AccFlow-Rst") {
     field(DESC, "Reset accumulated flow")
     field(DTYP, "asynUInt32Digital")
-    field(OUT,"@asynMask($(PORT_WO) 0x00F2 0xFFFF)")
-    field(VAL, "0x0001")
+    field(OUT,"@asynMask($(PORT_WO) 211 0xFFFF)")
+    field(VAL, "0x0003")
 }
 
 ##################################################

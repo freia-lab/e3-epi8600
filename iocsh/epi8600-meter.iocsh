@@ -24,9 +24,9 @@
 #			 'PLC type'
 
 
-drvModbusAsynConfigure(RO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR), "$(ASYN_PORT_NAME)", $(MODBUS_ADR), 3, 0x0030, 16, "UINT16", 4000, "epi8600")
+drvModbusAsynConfigure(RO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR), "$(ASYN_PORT_NAME)", $(MODBUS_ADR), 3, 0x0000, 32, "UINT16", 4000, "epi8600")
 
-drvModbusAsynConfigure(WO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR), "$(ASYN_PORT_NAME)", $(MODBUS_ADR), 6, -1, 1, "UINT16", 0, "epi8600")
+drvModbusAsynConfigure(WO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR), "$(ASYN_PORT_NAME)", $(MODBUS_ADR), 16, -1, 2, "UINT16", 0, "epi8600")
 
 #Load your database defining the EPICS records
 
