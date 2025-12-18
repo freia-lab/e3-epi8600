@@ -1,4 +1,4 @@
-record(stringin,"$(P)$(D):SerialNo") {
+record(longin,"$(P)$(D):SerialNo") {
     field(DESC, "Serial number")				     
     field(DTYP,"asynInt32")
     field(INP,"@asynMask($(PORT_RO) 6 32)INT32_BE")

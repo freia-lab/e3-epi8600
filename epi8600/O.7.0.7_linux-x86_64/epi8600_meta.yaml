@@ -1,5 +1,0 @@
-wrapper_url: 'https://github.com/freia-lab/e3-epi8600.git'
-wrapper_git_desc: 'cd28f5009cf697f38169fff5bd9b16b83a4fe165'
-wrapper_diffs: [ " M configure/CONFIG_MODULE",  " M epi8600.Makefile",  "?? epi8600/",  "?? iocsh/epi8600-eth-ctrl.iocsh",  "?? iocsh/epi8600-meter.iocsh", ]
-module_git_desc: 'cd28f5009cf697f38169fff5bd9b16b83a4fe165'
-module_diffs: [ " M configure/CONFIG_MODULE",  "?? epi8600/",  "?? iocsh/epi8600-eth-ctrl.iocsh",  "?? iocsh/epi8600-meter.iocsh", ]

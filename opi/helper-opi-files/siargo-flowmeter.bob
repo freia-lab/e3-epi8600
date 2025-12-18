@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-04-14 09:59:32 by konrad-->
+<display version="2.0.0">
+  <name>siargo-flowmeter</name>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <text>Serial number:</text>
+    <x>30</x>
+    <y>50</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_1</name>
+    <text>Ambient temperature:</text>
+    <x>30</x>
+    <y>80</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_2</name>
+    <text>Flow rate:</text>
+    <x>30</x>
+    <y>110</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_3</name>
+    <text>Accumulated flow:</text>
+    <x>30</x>
+    <y>140</y>
+    <width>150</width>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update</name>
+    <pv_name>$(P)$(D):SerialNo</pv_name>
+    <x>190</x>
+    <y>50</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_1</name>
+    <pv_name>$(P)$(D):T</pv_name>
+    <x>190</x>
+    <y>80</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_2</name>
+    <pv_name>$(P)$(D):FlowRt</pv_name>
+    <x>190</x>
+    <y>110</y>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Text Update_3</name>
+    <pv_name>$(P)$(D):AccFlow</pv_name>
+    <x>190</x>
+    <y>140</y>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_4</name>
+    <text>Name:</text>
+    <x>30</x>
+    <y>20</y>
+    <width>150</width>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Label_5</name>
+    <text>$(D)</text>
+    <x>190</x>
+    <y>20</y>
+    <font>
+      <font name="Default Bold" family="Source Sans Pro" style="BOLD" size="16.0">
+      </font>
+    </font>
+  </widget>
+  <widget type="databrowser" version="2.0.0">
+    <name>Data Browser</name>
+    <file>plots/flowmeter.plt</file>
+    <x>320</x>
+    <y>20</y>
+    <height>240</height>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions execute_as_one="true">
+      <action type="write_pv">
+        <pv_name>$(P)$(D):WriteEnable</pv_name>
+        <value>43605</value>
+        <description>Write enable</description>
+      </action>
+      <action type="write_pv">
+        <pv_name>$(P)$(D):AccFlow-Rst</pv_name>
+        <value>1</value>
+        <description>Clear Accumulated flow</description>
+      </action>
+    </actions>
+    <text>Reset Accumulated Flow</text>
+    <x>190</x>
+    <y>180</y>
+    <height>70</height>
+    <tooltip>$(actions)</tooltip>
+    <show_confirm_dialog>true</show_confirm_dialog>
+    <password>freia</password>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button_1</name>
+    <actions execute_as_one="true">
+      <action type="open_webpage">
+        <url>http://$(URL)</url>
+        <description>Open Modbus Gateway Web Interface</description>
+      </action>
+    </actions>
+    <x>30</x>
+    <y>180</y>
+    <height>70</height>
+    <tooltip>$(actions)</tooltip>
+    <password>freia</password>
+  </widget>
+</display>

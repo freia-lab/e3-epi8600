@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2025-12-18 16:51:08 by konrad-->
+<display version="2.0.0">
+  <name>BMC-flowmeters</name>
+  <height>800</height>
+  <widget type="label" version="2.0.0">
+    <name>Label</name>
+    <class>TITLE</class>
+    <text>BMC Flow Meters</text>
+    <x use_class="true">20</x>
+    <y use_class="true">0</y>
+    <width>550</width>
+    <height use_class="true">50</height>
+    <font use_class="true">
+      <font name="Header 1" family="Source Sans Pro" style="BOLD_ITALIC" size="36.0">
+      </font>
+    </font>
+    <foreground_color use_class="true">
+      <color name="HEADER-TEXT" red="0" green="0" blue="0">
+      </color>
+    </foreground_color>
+    <transparent use_class="true">true</transparent>
+    <horizontal_alignment use_class="true">0</horizontal_alignment>
+    <vertical_alignment use_class="true">1</vertical_alignment>
+    <wrap_words use_class="true">false</wrap_words>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>Action Button</name>
+    <actions>
+      <action type="open_display">
+        <file>../freia-symbols/display-builder/asyn/asynRecord.bob</file>
+        <macros>
+          <P>ioc44-bronkhorst:</P>
+          <R>asynRec</R>
+        </macros>
+        <target>replace</target>
+        <description>Asyn Record...</description>
+      </action>
+    </actions>
+    <x>620</x>
+    <y>20</y>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display</name>
+    <macros>
+      <D>MF-BMC</D>
+      <P>Env-Gas:</P>
+      <URL>192.168.10.224</URL>
+    </macros>
+    <file>helper-opi-files/siargo-flowmeter.bob</file>
+    <y>60</y>
+    <width>770</width>
+    <height>280</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_1</name>
+    <macros>
+      <D>Gasol</D>
+      <P>Env-Gas:</P>
+      <URL>192.168.10.249/ip_en.html</URL>
+    </macros>
+    <file>helper-opi-files/epi8600-flowmeter.bob</file>
+    <y>330</y>
+    <width>800</width>
+    <height>340</height>
+  </widget>
+</display>

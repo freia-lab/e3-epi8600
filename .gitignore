@@ -11,6 +11,7 @@ venv
 core.*
 *-loc/*.Makefile
 epi8600/*.Makefile
+epi8600/O.*
 cellMods/
 testMods*/
 *PVs.list
