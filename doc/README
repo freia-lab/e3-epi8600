@@ -1,0 +1,11 @@
+How to clear the totalizer:
+
+1. Unlock settings: write 9001 to holding register 219
+2. Clear the totalizer: write 3 to holding register 211
+3. Write 500 to register 500
+
+Note:
+Once you unlock the meter, you can change multiple parameters via the commands.
+When you are done making changes, write 500 to register 500 to save and reboot.
+The meter will be locked after writing 500.  If you want to make additional
+changes, you must unlock the meter again.  

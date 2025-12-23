@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-12-18 16:50:00 by konrad-->
+<!--Saved on 2025-12-23 10:28:28 by konrad-->
 <display version="2.0.0">
   <name>epi8600-flowmeter</name>
   <widget type="label" version="2.0.0">
@@ -136,6 +136,11 @@
         <pv_name>$(P)$(D):AccFlow-Rst</pv_name>
         <value>1</value>
         <description>Clear Accumulated flow</description>
+      </action>
+      <action type="write_pv">
+        <pv_name>$(P)$(D):Reboot</pv_name>
+        <value>500</value>
+        <description>Reboot</description>
       </action>
     </actions>
     <text>Reset Accumulated Flow</text>

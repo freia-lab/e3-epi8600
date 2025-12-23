@@ -51,16 +51,23 @@ record(ai, "$(P)$(D):T") {
 
 record(longout, "$(P)$(D):WriteEnable") {
     field(DESC, "Write enable")
-    field(DTYP, "asynUInt32Digital")
-    field(OUT,"@asynMask($(PORT_WO) 219 0xFFFF)")
+    field(DTYP, "asynInt32")
+    field(OUT,"@asyn($(PORT_WO) 219)INT32_BE")
     field(VAL, "9001")
 }
 
 record(longout, "$(P)$(D):AccFlow-Rst") {
     field(DESC, "Reset accumulated flow")
-    field(DTYP, "asynUInt32Digital")
-    field(OUT,"@asynMask($(PORT_WO) 211 0xFFFF)")
+    field(DTYP, "asynInt32")
+    field(OUT,"@asyn($(PORT_WO) 211)INT32_BE")
     field(VAL, "0x0003")
+}
+
+record(longout, "$(P)$(D):Reboot") {
+    field(DESC, "Save settings and reboot")
+    field(DTYP, "asynInt32")
+    field(OUT,"@asyn($(PORT_WO) 500)INT32_BE")
+    field(VAL, "500")
 }
 
 ##################################################
