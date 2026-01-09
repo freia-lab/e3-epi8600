@@ -7,8 +7,8 @@ record(longin,"$(P)$(D):SerialNo") {
 
 record(ai, "$(P)$(D):FlowRt") {
     field(DESC, "Gas flow rate")
-    field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 0 32)FLOAT32_BE")
+    field(DTYP, "asynFloat64")
+    field(INP,"@asyn($(PORT_RO) 0)FLOAT32_BE")
     field(LINR,"NO CONVERSION")
     field(ASLO,"$(ASLO)")
     field(HOPR,"400")
@@ -22,8 +22,8 @@ record(ai, "$(P)$(D):FlowRt") {
 
 record(ai, "$(P)$(D):AccFlow") {
     field(DESC, "Accumulated gas flow")
-    field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 2 32)FLOAT32_BE")
+    field(DTYP, "asynFloat64")
+    field(INP, "@asyn($(PORT_RO) 2)FLOAT32_BE")
     field(LINR,"NO CONVERSION")
     field(ASLO,"$(ASLO)")
     field(EGU, "Nm³")
@@ -33,8 +33,8 @@ record(ai, "$(P)$(D):AccFlow") {
 
 record(ai, "$(P)$(D):T") {
     field(DESC, "Ambient temperature")
-    field(DTYP, "asynInt32")
-    field(INP,"@asynMask($(PORT_RO) 4 32)FLOAT32_BE")
+    field(DTYP, "asynFloat64")
+    field(INP,"@asyn($(PORT_RO) 4)FLOAT32_BE")
     field(LINR,"NO CONVERSION")
     field(HOPR,"60.0")
     field(LOPR,"0")

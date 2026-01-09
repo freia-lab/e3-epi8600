@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-01-07 14:06:48 by konrad-->
+<!--Saved on 2026-01-09 10:58:18 by konrad-->
 <display version="2.0.0">
   <name>epi8600-flowmeter</name>
   <widget type="label" version="2.0.0">
@@ -74,7 +74,7 @@
   <widget type="databrowser" version="2.0.0">
     <name>Data Browser</name>
     <file>plots/flowmeter.plt</file>
-    <x>400</x>
+    <x>320</x>
     <y>20</y>
     <height>240</height>
   </widget>
@@ -91,38 +91,6 @@
     <height>70</height>
     <tooltip>$(actions)</tooltip>
     <password>freia</password>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo Box</name>
-    <pv_name>$(P)$(D):SerialNo.SCAN</pv_name>
-    <x>300</x>
-    <y>50</y>
-    <width>90</width>
-    <height>20</height>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo Box_1</name>
-    <pv_name>$(P)$(D):T.SCAN</pv_name>
-    <x>300</x>
-    <y>80</y>
-    <width>90</width>
-    <height>20</height>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo Box_2</name>
-    <pv_name>$(P)$(D):FlowRt.SCAN</pv_name>
-    <x>300</x>
-    <y>110</y>
-    <width>90</width>
-    <height>20</height>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>Combo Box_3</name>
-    <pv_name>$(P)$(D):AccFlow.SCAN</pv_name>
-    <x>300</x>
-    <y>140</y>
-    <width>90</width>
-    <height>20</height>
   </widget>
   <widget type="action_button" version="3.0.0">
     <name>Action Button</name>
