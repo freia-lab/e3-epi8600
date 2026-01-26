@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-12-23 10:37:07 by konrad-->
+<!--Saved on 2026-01-15 14:23:56 by konrad-->
 <display version="2.0.0">
   <name>BMC-flowmeters</name>
   <height>800</height>
@@ -58,7 +58,7 @@
     <macros>
       <D>Gasol</D>
       <P>Env-Gas:</P>
-      <URL>192.168.10.249/ip_en.html</URL>
+      <URL>192.168.10.248/ip_en.html</URL>
     </macros>
     <file>helper-opi-files/epi8600-flowmeter.bob</file>
     <y>330</y>
