@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-01-15 14:23:56 by konrad-->
+<!--Saved on 2026-04-10 10:28:35 by konrad-->
 <display version="2.0.0">
-  <name>BMC-flowmeters</name>
+  <name>EPI-flowmeters</name>
   <height>800</height>
   <widget type="label" version="2.0.0">
     <name>Label</name>
     <class>TITLE</class>
-    <text>BMC Flow Meters</text>
+    <text>BMC EPI Flow Meters</text>
     <x use_class="true">20</x>
     <y use_class="true">0</y>
     <width>550</width>
@@ -30,8 +30,8 @@
       <action type="open_display">
         <file>../freia-symbols/display-builder/asyn/asynRecord.bob</file>
         <macros>
-          <P>ioc44-epi8600:</P>
           <R>asynRec</R>
+          <P>ioc40-bmcgas:</P>
         </macros>
         <target>replace</target>
         <description>Asyn Record...</description>
@@ -42,27 +42,29 @@
     <tooltip>$(actions)</tooltip>
   </widget>
   <widget type="embedded" version="2.0.0">
-    <name>Embedded Display</name>
-    <macros>
-      <D>MF-BMC</D>
-      <P>Env-Gas:</P>
-      <URL>192.168.10.224</URL>
-    </macros>
-    <file>helper-opi-files/siargo-flowmeter.bob</file>
-    <y>60</y>
-    <width>770</width>
-    <height>280</height>
-  </widget>
-  <widget type="embedded" version="2.0.0">
     <name>Embedded Display_1</name>
     <macros>
       <D>Gasol</D>
       <P>Env-Gas:</P>
-      <URL>192.168.10.248/ip_en.html</URL>
+      <URL>172.16.140.11/ip_en.html</URL>
     </macros>
     <file>helper-opi-files/epi8600-flowmeter.bob</file>
-    <y>330</y>
-    <width>800</width>
-    <height>340</height>
+    <x>20</x>
+    <y>60</y>
+    <width>730</width>
+    <height>280</height>
+  </widget>
+  <widget type="embedded" version="2.0.0">
+    <name>Embedded Display_10</name>
+    <macros>
+      <D>H2</D>
+      <P>Env-Gas:</P>
+      <URL>172.16.140.12/ip_en.html</URL>
+    </macros>
+    <file>helper-opi-files/epi8600-flowmeter.bob</file>
+    <x>20</x>
+    <y>350</y>
+    <width>730</width>
+    <height>280</height>
   </widget>
 </display>

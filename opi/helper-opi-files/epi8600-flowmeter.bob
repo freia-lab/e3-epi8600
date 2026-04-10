@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-01-09 10:58:18 by konrad-->
+<!--Saved on 2026-04-09 13:42:32 by konrad-->
 <display version="2.0.0">
   <name>epi8600-flowmeter</name>
   <widget type="label" version="2.0.0">
@@ -64,7 +64,7 @@
   <widget type="label" version="2.0.0">
     <name>Label_5</name>
     <text>$(D)</text>
-    <x>190</x>
+    <x>70</x>
     <y>20</y>
     <font>
       <font name="Default Bold" family="Source Sans Pro" style="BOLD" size="16.0">
@@ -86,7 +86,7 @@
         <description>Open Modbus Gateway Web Interface</description>
       </action>
     </actions>
-    <x>30</x>
+    <x>10</x>
     <y>190</y>
     <height>70</height>
     <tooltip>$(actions)</tooltip>
@@ -118,5 +118,20 @@
     <tooltip>$(actions)</tooltip>
     <show_confirm_dialog>true</show_confirm_dialog>
     <password>freia</password>
+  </widget>
+  <widget type="led" version="2.0.0">
+    <name>LED</name>
+    <pv_name>$(P)$(D):sAlive</pv_name>
+    <x>190</x>
+    <y>20</y>
+    <width>100</width>
+    <height>25</height>
+    <off_label>Dead</off_label>
+    <off_color>
+      <color name="MAJOR" red="252" green="13" blue="27">
+      </color>
+    </off_color>
+    <on_label>Alive</on_label>
+    <square>true</square>
   </widget>
 </display>
