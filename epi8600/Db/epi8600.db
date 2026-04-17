@@ -18,7 +18,8 @@ record(ai, "$(P)$(D):FlowRt") {
     field(EGU, "Sl/h")
     field(SCAN,"I/O Intr")
     field(SMOO, "0.95")
-    info (autosaveFields, "SMOO VAL")
+    field(ADEL, "0.1")
+    info (autosaveFields, "SMOO ADEL VAL")
 }
 
 record(ai, "$(P)$(D):AccFlow") {
@@ -31,7 +32,8 @@ record(ai, "$(P)$(D):AccFlow") {
     field(EGU, "Sl")
     field(SCAN,"I/O Intr")
     field(PREC,"3")
-    info (autosaveFields, "VAL")
+    field(ADEL, "0.1")
+    info (autosaveFields, "VAL ADEL")
 }
 
 record(ai, "$(P)$(D):T") {
@@ -45,7 +47,8 @@ record(ai, "$(P)$(D):T") {
     field(EGU, "°C")
     field(SCAN,"I/O Intr")
     field(SMOO, "0.8")
-    info (autosaveFields, "SMOO")
+    field(ADEL, "0.1")
+    info (autosaveFields, "SMOO ADEL VAL")
 }
 
 ##################################################
