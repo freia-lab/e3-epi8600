@@ -11,7 +11,9 @@
 #  		    (1.0 for gauge set for Nm³,
 #-		    0.001 for gauge set for SL)
 #-
-
+#- >>> Optional
+#- KEEP_TCHANGED  - keep the status for the last temperature change
+#- 		    (default 900 s). Used for creating sActive status.
 
 #drvModbusAsynConfigure	 'Port name'
 #			 'Octet port name' 
@@ -30,4 +32,4 @@ drvModbusAsynConfigure(WO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR), "$(ASYN_PORT_NAM
 
 #Load your database defining the EPICS records
 
-dbLoadRecords("epi8600.db", "PORT_RO=RO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR),PORT_WO=WO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR),P=$(PREFIX),D=$(DEV_NAME),ASLO=$(ASLO),SCALE=$(SCALE)")
+dbLoadRecords("epi8600.db", "PORT_RO=RO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR),PORT_WO=WO_DATA_$(ASYN_PORT_NAME)_$(MODBUS_ADR),P=$(PREFIX),D=$(DEV_NAME),ASLO=$(ASLO),SCALE=$(SCALE),KEEP_HIGH=$(KEEP_TCHANGED=900.0)")

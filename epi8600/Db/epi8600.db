@@ -85,24 +85,31 @@ record(longout, "$(P)$(D):Reboot") {
 # for reporting an error when the Modbus data is read
 # without any error but it's the old data, not the current one
 #
+
 record(calc, "$(P)$(D):sAlive") {
    field(DESC, "Live data OK")
    field(SCAN, "60 second")
    field(INPA, "$(P)$(D):AccFlow")
    field(INPB, "$(P)$(D):sAlive.LA")
-   field(INPC, "$(P)$(D):T")
-   field(INPD, "$(P)$(D):sAlive.LC")
-   field(INPE, "$(P)$(D):sAlive.LD")
-   field(INPF, "$(P)$(D):sAlive.LE")
-   field(INPG, "$(P)$(D):sAlive.LF")
-   field(INPH, "$(P)$(D):sAlive.LG")
-   field(INPI, "$(P)$(D):sAlive.LH")
-   field(INPJ, "$(P)$(D):sAlive.LI")
-   field(INPK, "$(P)$(D):sAlive.LJ")
-   field(INPL, "$(P)$(D):sAlive.LK")
-   field(CALC, "(A#B)?1:((C=D&&C=E&&C=F&&C=G&&C=H&&C=I&&C=J&&C=K&&C=J)?0:1)")
+   field(INPC, "$(P)$(D):sTchanged")
+   field(CALC, "(A#B)||C")
    field(LOW, "0.5")
    field(LSV, "MAJOR")
    field(VAL, "1")
-   info (autosaveFields, "A B C D E F G H I J K")
+   info (autosaveFields, "A B C")
+}
+
+record (bo, "$(P)$(D):sTchanged") {
+    field(HIGH, "$(KEEP_HIGH)")
+    field(ONAM, "T changed in $(KEEP_HIGH) s")
+    field(ZNAM, "T unchanged in $(KEEP_HIGH) s")
+}
+
+record(calcout, "$(P)$(D):chckT") {
+    field(SCAN, "2 second")
+    field(INPA, "$(P)$(D):T")
+    field(INPB, "$(P)$(D):chckT.LA")
+    field(CALC, "A#B?1:0")
+    field(OUT, "$(P)$(D):sTchanged PP")
+    field(OOPT, "Transition To Non-zero")
 }
